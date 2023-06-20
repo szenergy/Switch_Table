@@ -4,4 +4,4 @@ This repository contains the MPLAB X project code for the microcontroller of the
 ## Requirements
 
 - MPLAB X IDE
-- MPLAB XC8 Compiler
+- MPLAB XC16 Compiler
