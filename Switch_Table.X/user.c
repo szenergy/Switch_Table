@@ -26,6 +26,9 @@ volatile CAN_Bytes battery_voltage;
 volatile double mc_duty_cycle;
 volatile int32_t mc_data_buffer;
 
+volatile double vcu_throttle;
+volatile int32_t vcu_data_buffer;
+
 //CAN_MSG_OBJ testmsg;
 volatile CAN_MSG_OBJ VCUmsg;
 volatile CAN_MSG_OBJ MCmsg;
@@ -428,12 +431,16 @@ void CanVcuState(void){
 //        VcuState_A.DRIVE            =   0;  
 //        VcuState_A.REVERSE          =   0;
 //    }
+    vcu_throttle = (double)conversion.ADC_Word/1023;
+     
+    vcu_data_buffer = vcu_throttle * 100000;
+    data_vcu_state[2] = vcu_data_buffer >> 24;
+    data_vcu_state[3] = vcu_data_buffer >> 16;
+    data_vcu_state[4] = vcu_data_buffer >> 8;
+    data_vcu_state[5] = vcu_data_buffer; 
+    
     data_vcu_state[0] = VcuState_A.VCUBits_1;
     data_vcu_state[1] = VcuState_B.VCUBits_2;
-    data_vcu_state[2] = data_mc[0];
-    data_vcu_state[3] = data_mc[1];
-    data_vcu_state[4] = data_mc[2];
-    data_vcu_state[5] = data_mc[3];
 //    data_vcu_state[3] = CanCounter;
     
     CAN1_OperationModeSet(CAN_NORMAL_2_0_MODE);

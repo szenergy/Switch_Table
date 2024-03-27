@@ -90,6 +90,7 @@ int main(void){
         
         if(flags.can_vcu_state == true){
 //            while((C1TR01CONbits.TXREQ0 == 1) | (C1TR01CONbits.TXABT0 == 1));
+            PotConversion();
             CanVcuState();
             flags.can_vcu_state = false;
         }

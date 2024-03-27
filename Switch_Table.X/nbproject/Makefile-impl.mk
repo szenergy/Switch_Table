@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=SW_Table_V3.X
+PROJECTNAME=Switch_Table.X
 
 # Active Configuration
 DEFAULTCONF=default
