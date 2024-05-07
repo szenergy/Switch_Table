@@ -55,15 +55,15 @@ void INTERRUPT_Initialize (void)
     //    CNI: Change Notification Interrupt
     //    Priority: 1
         IPC4bits.CNIP = 1;
+    //    CI: ECAN1 Event
+    //    Priority: 1
+        IPC8bits.C1IP = 1;
     //    DMA0I: DMA Channel 0
     //    Priority: 1
         IPC1bits.DMA0IP = 1;
     //    DMA2I: DMA Channel 2
     //    Priority: 1
         IPC6bits.DMA2IP = 1;
-    //    CI: ECAN1 Event
-    //    Priority: 1
-        IPC8bits.C1IP = 1;
     //    TI: Timer 1
     //    Priority: 1
         IPC0bits.T1IP = 1;

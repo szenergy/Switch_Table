@@ -1971,11 +1971,11 @@
   @Example
     <code>
     // Set RB9 high (1)
-    IO_FN2_SetHigh();
+    IO_MOD_SetHigh();
     </code>
 
 */
-#define IO_FN2_SetHigh()          (_LATB9 = 1)
+#define IO_MOD_SetHigh()          (_LATB9 = 1)
 /**
   @Summary
     Sets the GPIO pin, RB9, low using LATB9.
@@ -1995,11 +1995,11 @@
   @Example
     <code>
     // Set RB9 low (0)
-    IO_FN2_SetLow();
+    IO_MOD_SetLow();
     </code>
 
 */
-#define IO_FN2_SetLow()           (_LATB9 = 0)
+#define IO_MOD_SetLow()           (_LATB9 = 0)
 /**
   @Summary
     Toggles the GPIO pin, RB9, using LATB9.
@@ -2019,11 +2019,11 @@
   @Example
     <code>
     // Toggle RB9
-    IO_FN2_Toggle();
+    IO_MOD_Toggle();
     </code>
 
 */
-#define IO_FN2_Toggle()           (_LATB9 ^= 1)
+#define IO_MOD_Toggle()           (_LATB9 ^= 1)
 /**
   @Summary
     Reads the value of the GPIO pin, RB9.
@@ -2045,11 +2045,11 @@
     uint16_t portValue;
 
     // Read RB9
-    postValue = IO_FN2_GetValue();
+    postValue = IO_MOD_GetValue();
     </code>
 
 */
-#define IO_FN2_GetValue()         _RB9
+#define IO_MOD_GetValue()         _RB9
 /**
   @Summary
     Configures the GPIO pin, RB9, as an input.
@@ -2069,11 +2069,11 @@
   @Example
     <code>
     // Sets the RB9 as an input
-    IO_FN2_SetDigitalInput();
+    IO_MOD_SetDigitalInput();
     </code>
 
 */
-#define IO_FN2_SetDigitalInput()  (_TRISB9 = 1)
+#define IO_MOD_SetDigitalInput()  (_TRISB9 = 1)
 /**
   @Summary
     Configures the GPIO pin, RB9, as an output.
@@ -2093,11 +2093,11 @@
   @Example
     <code>
     // Sets the RB9 as an output
-    IO_FN2_SetDigitalOutput();
+    IO_MOD_SetDigitalOutput();
     </code>
 
 */
-#define IO_FN2_SetDigitalOutput() (_TRISB9 = 0)
+#define IO_MOD_SetDigitalOutput() (_TRISB9 = 0)
 /**
   @Summary
     Sets the GPIO pin, RC10, high using LATC10.
@@ -2244,6 +2244,152 @@
 
 */
 #define IO_TS_L_SetDigitalOutput() (_TRISC10 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RC11, high using LATC11.
+
+  @Description
+    Sets the GPIO pin, RC11, high using LATC11.
+
+  @Preconditions
+    The RC11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC11 high (1)
+    IO_WIPER_SetHigh();
+    </code>
+
+*/
+#define IO_WIPER_SetHigh()          (_LATC11 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RC11, low using LATC11.
+
+  @Description
+    Sets the GPIO pin, RC11, low using LATC11.
+
+  @Preconditions
+    The RC11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC11 low (0)
+    IO_WIPER_SetLow();
+    </code>
+
+*/
+#define IO_WIPER_SetLow()           (_LATC11 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RC11, using LATC11.
+
+  @Description
+    Toggles the GPIO pin, RC11, using LATC11.
+
+  @Preconditions
+    The RC11 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RC11
+    IO_WIPER_Toggle();
+    </code>
+
+*/
+#define IO_WIPER_Toggle()           (_LATC11 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RC11.
+
+  @Description
+    Reads the value of the GPIO pin, RC11.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RC11
+    postValue = IO_WIPER_GetValue();
+    </code>
+
+*/
+#define IO_WIPER_GetValue()         _RC11
+/**
+  @Summary
+    Configures the GPIO pin, RC11, as an input.
+
+  @Description
+    Configures the GPIO pin, RC11, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC11 as an input
+    IO_WIPER_SetDigitalInput();
+    </code>
+
+*/
+#define IO_WIPER_SetDigitalInput()  (_TRISC11 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RC11, as an output.
+
+  @Description
+    Configures the GPIO pin, RC11, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC11 as an output
+    IO_WIPER_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_WIPER_SetDigitalOutput() (_TRISC11 = 0)
 /**
   @Summary
     Sets the GPIO pin, RC13, high using LATC13.
@@ -3412,6 +3558,152 @@
 
 */
 #define IO_REVERSE_SetDigitalOutput() (_TRISD8 = 0)
+/**
+  @Summary
+    Sets the GPIO pin, RE12, high using LATE12.
+
+  @Description
+    Sets the GPIO pin, RE12, high using LATE12.
+
+  @Preconditions
+    The RE12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE12 high (1)
+    IO_5V_CONV_EN_SetHigh();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_SetHigh()          (_LATE12 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RE12, low using LATE12.
+
+  @Description
+    Sets the GPIO pin, RE12, low using LATE12.
+
+  @Preconditions
+    The RE12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RE12 low (0)
+    IO_5V_CONV_EN_SetLow();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_SetLow()           (_LATE12 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RE12, using LATE12.
+
+  @Description
+    Toggles the GPIO pin, RE12, using LATE12.
+
+  @Preconditions
+    The RE12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RE12
+    IO_5V_CONV_EN_Toggle();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_Toggle()           (_LATE12 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RE12.
+
+  @Description
+    Reads the value of the GPIO pin, RE12.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RE12
+    postValue = IO_5V_CONV_EN_GetValue();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_GetValue()         _RE12
+/**
+  @Summary
+    Configures the GPIO pin, RE12, as an input.
+
+  @Description
+    Configures the GPIO pin, RE12, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE12 as an input
+    IO_5V_CONV_EN_SetDigitalInput();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_SetDigitalInput()  (_TRISE12 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RE12, as an output.
+
+  @Description
+    Configures the GPIO pin, RE12, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RE12 as an output
+    IO_5V_CONV_EN_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_5V_CONV_EN_SetDigitalOutput() (_TRISE12 = 0)
 /**
   @Summary
     Sets the GPIO pin, RE14, high using LATE14.

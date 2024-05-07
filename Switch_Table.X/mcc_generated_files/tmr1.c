@@ -57,7 +57,6 @@
 void (*TMR1_InterruptHandler)(void) = NULL;
 void TMR1_CallBack(void);
 
-int cnt1 = 0;
 /**
   Section: Data Type Definitions
 */
@@ -85,6 +84,7 @@ typedef struct _TMR_OBJ_STRUCT
 } TMR_OBJ;
 
 static TMR_OBJ tmr1_obj;
+static uint16_t wiper_cnt;
 
 /**
   Section: Driver Interface
@@ -109,6 +109,7 @@ void TMR1_Initialize (void)
 	
     tmr1_obj.timerElapsed = false;
 
+    wiper_cnt = 0;
 }
 
 
@@ -175,6 +176,14 @@ void __attribute__ ((weak)) TMR1_CallBack(void)
         flags.mc_command_update_and_send = true;
         flags.can_vcu_state = true;
     }
+    if(flags.wiper_on){
+        wiper_cnt++;
+        if(wiper_cnt >= WIPER_PERIOD){
+            flags.wiper_move = true;
+            wiper_cnt = 0;
+        }
+    }
+    
     counter_can_tx_100ms++;
     debounce_ms_counter++;
     

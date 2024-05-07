@@ -60,6 +60,7 @@ int main(void){
 //    IO_LED3_SetHigh();
 //    IO_LED4_SetHigh();
 //    IO_BUZZ_SetHigh();
+
     while (1){
         ClrWdt();
         if(flags.can_process_rec_msg == true){
@@ -104,6 +105,8 @@ int main(void){
             DebounceProtectedPortStatusUpdate();
             flags.debounce_protected_port_status_update = false;
         }
+        
+        WiperActions();
 
         if(CAN1_IsRXErrorPassive() || CAN1_IsTXErrorPassive()){
             IO_LED2_SetHigh(); //uncomment after testing

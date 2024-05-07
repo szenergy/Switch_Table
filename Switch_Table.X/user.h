@@ -25,8 +25,8 @@ typedef union  __attribute__(())
         uint8_t LAP             :1;
         uint8_t DC_ENABLE       :1;
         uint8_t MC_OW           :1;
-        uint8_t FN1             :1;
-        uint8_t FN2             :1;   
+        uint8_t SPD_CONT        :1;
+        uint8_t MOD             :1;   
     };
 }VCU_STATE_A;
 
@@ -45,6 +45,22 @@ typedef union __attribute__(())
         uint8_t RELAY_NC        :1;
     };
 }VCU_STATE_B;
+
+typedef union __attribute__(()) 
+{
+    uint8_t VCUBits_3;
+    struct
+    {
+        uint8_t WIPER           :1;
+        uint8_t RESERVED1       :1;
+        uint8_t RESERVED2       :1;
+        uint8_t RESERVED3       :1;
+        uint8_t RESERVED4       :1;
+        uint8_t RESERVED5       :1;
+        uint8_t RESERVED6       :1;
+        uint8_t RESERVED7       :1;
+    };
+}VCU_STATE_C;
 
 typedef union __attribute__(()) 
 {
@@ -114,6 +130,8 @@ struct FLAGS{
     bool can_synced;
     bool mc_override_changed_to_1;
     bool mc_override_changed_to_0;
+    bool wiper_on;
+    bool wiper_move;
 };
 
 enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic_Dec};
@@ -124,6 +142,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 
 extern volatile VCU_STATE_A VcuState_A;
 extern volatile VCU_STATE_B VcuState_B;
+extern volatile VCU_STATE_C VcuState_C;
 
 extern volatile struct FLAGS flags;
 //extern volatile struct VEHICLE vehicle;
@@ -163,10 +182,8 @@ extern volatile bool displayed_steeringw_installed;
 //extern volatile float EMA_A;
 extern volatile uint16_t ema_s;
 
-//extern volatile uint16_t STEP;
-//extern volatile uint16_t ZERO_REF;
-//extern volatile uint16_t MAX_REF;
-//extern uint8_t REF;
+//Right_state = 0; Left_State = 1;
+extern volatile uint8_t wiper_state;
 
 // ******************************
 // User exported function prototypes
@@ -189,6 +206,7 @@ void CalculateMCRef(void);
 void TimerProcesses(void);
 void StateMachineUpdate(void);
 void RateLimiter(void);
+void WiperActions(void);
 
 
 

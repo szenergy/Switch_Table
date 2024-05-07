@@ -78,10 +78,10 @@ void PIN_MANAGER_Initialize (void){
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
     TRISA = 0x1F13;
-    TRISB = 0x3FFF;
+    TRISB = 0x1FFF;
     TRISC = 0x3EFF;
     TRISD = 0x0140;
-    TRISE = 0xB000;
+    TRISE = 0xA000;
     TRISF = 0x0003;
     TRISG = 0x0380;
 
@@ -119,8 +119,8 @@ void PIN_MANAGER_Initialize (void){
      ***************************************************************************/
     ANSELA = 0x1C03;
     ANSELB = 0x0003;
-    ANSELC = 0x0A17;
-    ANSELE = 0x3000;
+    ANSELC = 0x0217;
+    ANSELE = 0x2000;
     ANSELG = 0x0300;
     
     /****************************************************************************
@@ -145,6 +145,7 @@ void PIN_MANAGER_Initialize (void){
     CNENBbits.CNIEB8 = 1;    //Pin : RB8
     CNENBbits.CNIEB9 = 1;    //Pin : RB9
     CNENCbits.CNIEC10 = 1;    //Pin : RC10
+    CNENCbits.CNIEC11 = 1;    //Pin : RC11
     CNENCbits.CNIEC13 = 1;    //Pin : RC13
     CNENCbits.CNIEC3 = 1;    //Pin : RC3
     CNENCbits.CNIEC5 = 1;    //Pin : RC5
