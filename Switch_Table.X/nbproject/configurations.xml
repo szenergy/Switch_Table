@@ -373,7 +373,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-2ab7f"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
                   value="C:/Users/orsza/MPLABXProjects/SW_Tablev2_v2_Orszag_Andras_Most_Recent_LUTless.X/debug/default/SW_Tablev2_v2_ptg"/>
         <property key="programmerToGoImageName" value="SW_Tablev2_v2_ptg"/>
@@ -463,9 +463,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-2ab7f"/>
-        <property key="poweroptions.powerenable" value="true"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/GPeter/Dropbox/MPLAB/SwitchTable/Switch_Table/Switch_Table.X/debug/default/SW_Tablev2_v2_ptg"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoImageName" value="SW_Tablev2_v2_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

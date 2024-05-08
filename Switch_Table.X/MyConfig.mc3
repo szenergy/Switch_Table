@@ -8520,10 +8520,6 @@
          <value>12</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON1" settingAlias="CLSRC" alias="FLT1"/>
-         <value>0</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON1" settingAlias="CLSRC" alias="FLT2"/>
          <value>1</value>
       </entry>
@@ -8608,10 +8604,6 @@
          <value>2</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON1" settingAlias="FLTSRC" alias="FLT32"/>
-         <value>31</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON1" settingAlias="FLTSRC" alias="FLT4"/>
          <value>3</value>
       </entry>
@@ -8674,10 +8666,6 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON2" settingAlias="CLSRC" alias="CMP5"/>
          <value>12</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON2" settingAlias="CLSRC" alias="FLT1"/>
-         <value>0</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON2" settingAlias="CLSRC" alias="FLT2"/>
@@ -8764,10 +8752,6 @@
          <value>2</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON2" settingAlias="FLTSRC" alias="FLT32"/>
-         <value>31</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON2" settingAlias="FLTSRC" alias="FLT4"/>
          <value>3</value>
       </entry>
@@ -8830,10 +8814,6 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="CLSRC" alias="CMP5"/>
          <value>12</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="CLSRC" alias="FLT1"/>
-         <value>0</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="CLSRC" alias="FLT2"/>
@@ -8918,10 +8898,6 @@
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="FLTSRC" alias="FLT3"/>
          <value>2</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="FLTSRC" alias="FLT32"/>
-         <value>31</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="PWM" registerAlias="FCLCON3" settingAlias="FLTSRC" alias="FLT4"/>
@@ -11125,7 +11101,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="IOCON2"/>
-         <value>16386</value>
+         <value>18434</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="IOCON3"/>
@@ -11497,7 +11473,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="IOCON2" settingAlias="PMOD"/>
-         <value>Complementary Output Mode</value>
+         <value>Push-Pull Output Mode</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="IOCON2" settingAlias="POLH"/>
@@ -19158,24 +19134,24 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\pwm_module_features.h</file>
-         <hash>376cb9dd9622efde6ab1310195ca34f802ad94bb4cd5342071ffc5f3fa393190</hash>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>0e807482a537e69fa2b380df16dc5cd7c06c17593c3b56d19c730965f590d26a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\dma.c</file>
          <hash>c56c91ab6368a05d3253820eb02e746474ae2c09dc1f9f4c81c53ff33bafd6eb</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>0e807482a537e69fa2b380df16dc5cd7c06c17593c3b56d19c730965f590d26a</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\can1.h</file>
-         <hash>043269caf375f8aa4ac2aa4ac534b740ad82d931f1a1edfad777fcc5ab6ecd91</hash>
+         <file>mcc_generated_files\pwm_module_features.h</file>
+         <hash>376cb9dd9622efde6ab1310195ca34f802ad94bb4cd5342071ffc5f3fa393190</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\adc_module_features.h</file>
          <hash>448e2c623bcfefb80393d1e48d418d269c83b85c99ea9f5c786a39e27bed84fe</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\can1.h</file>
+         <hash>043269caf375f8aa4ac2aa4ac534b740ad82d931f1a1edfad777fcc5ab6ecd91</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\dma.h</file>
@@ -19195,7 +19171,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>c16981f209d373ae0becca5173012ed8881bd9a26cfe29f8c3131c34b68002a8</hash>
+         <hash>904a4620a99ecc4d1de3073bd79c052c2a81b545be7cff8ef19678cbe908cb33</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -19210,12 +19186,12 @@
          <hash>6306f40c1bb18b11bbae97e3c96fc30069ebfa186799b6dd47fec553e4ec238a</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>4569a9366da107c972d860bcf46f07b128f904b9569d07525f1c6587d92d4d46</hash>
+         <file>mcc_generated_files\pwm.c</file>
+         <hash>6d132673f168d39c08649fa381c3411a2a3d564edb5ef1a52ac271eb557a3cff</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\pwm.c</file>
-         <hash>98fbcd2f47541c29a8a70e461e89c8489050a2e5a746340547a898565ae2227e</hash>
+         <file>mcc_generated_files\mcc.h</file>
+         <hash>f9cd78a7799a9624b98e523ed7496c1c9e66d540c33f5863a7ff98d232d6a5eb</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -19230,16 +19206,16 @@
          <hash>15db763af2872bcc620d2664a2d10c9ac1a7ac480cbaf747c99209bfb88c65f6</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\adc1.c</file>
+         <hash>e63d0c1e5dacb5accdf8c11408f239cd0dab6da86e41f565dcc2047e40b4261c</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\can_types.h</file>
          <hash>7005e946152c25b306403f9c23352b7a66b703e925ec11dc95e5310faea95a89</hash>
       </entry>
       <entry>
          <file>main.c</file>
          <hash>2ee611dfcd0cb6c7b3dbd061f6a5effe02d12a0a9d5dd623de8807f3fd3b11b0</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\adc1.c</file>
-         <hash>e63d0c1e5dacb5accdf8c11408f239cd0dab6da86e41f565dcc2047e40b4261c</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.h</file>
@@ -19271,7 +19247,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\adc1.h</file>
-         <hash>aef829f2488247e33c966c69c3d0abe02edbb553a46de436bcb0244f6d2827b3</hash>
+         <hash>a0ad097e6703d0a6bed9458e7f05223f0c2812455edf0a2595ad3f83a3fbeb20</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>

@@ -63,6 +63,10 @@ int main(void){
 
     while (1){
         ClrWdt();
+        if(flags.wiper_on || VcuState_C.WIPER == 1){
+            WiperActions();
+        }
+        
         if(flags.can_process_rec_msg == true){
             CanMessageCheck();
             flags.can_process_rec_msg = false;
@@ -105,8 +109,6 @@ int main(void){
             DebounceProtectedPortStatusUpdate();
             flags.debounce_protected_port_status_update = false;
         }
-        
-        WiperActions();
 
         if(CAN1_IsRXErrorPassive() || CAN1_IsTXErrorPassive()){
             IO_LED2_SetHigh(); //uncomment after testing

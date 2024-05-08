@@ -45,9 +45,9 @@
 #define RATE_LIMIT_DOWN             (uint16_t)500
 #define DEBOUNCE_TIME_MS            (uint8_t)2
 #define WIPER_PERIOD                (uint16_t)3000 //time in ms
-#define WIPER_LIMIT_RIGHT           (uint16_t)915 // 0-40000 = 0-100% PWM Duty
-#define WIPER_LIMIT_LEFT            (uint16_t)1350 // 0-40000 = 0-100% PWM Duty
-#define WIPER_WINDSCREEN_CENTER     (uint16_t)1130 // 0-40000 = 0-100% PWM Duty
+#define WIPER_LIMIT_RIGHT           (uint16_t)900 // 0-40000 = 0-100% PWM Duty
+#define WIPER_LIMIT_LEFT            (uint16_t)1400 // 0-40000 = 0-100% PWM Duty
+#define WIPER_WINDSCREEN_CENTER     (uint16_t)1000 // 0-40000 = 0-100% PWM Duty
 
 
 #ifdef	__cplusplus
