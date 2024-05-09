@@ -54,10 +54,13 @@
 
 void PWM_Initialize (void)
 {
-    // PCLKDIV 32; 
-    PTCON2 = 0x05;
+    // PCLKDIV 32; --> 31,25 Hz
+    //PTCON2 = 0x05;
+    // PCLKDIV 16; 
+    PTCON2 = 0x04;
     // PTPER 40000; 
-    PTPER = 0x9C40;
+    //PTPER = 0x9C40; --> 62,5 Hz
+    PTPER = 0xC350; // --> 50 Hz
     // SEVTCMP 0; 
     SEVTCMP = 0x00;
     // MDC 0; 

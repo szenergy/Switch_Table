@@ -54,18 +54,36 @@ int main(void){
     flags.pgood = IO_PGOOD_GetValue();
 //    uint32_t cnt2 = 0;
     
-//    IO_DRIVE_SetDigitalInput();
-//    IO_LED1_SetHigh();
-//    IO_LED2_SetHigh();
-//    IO_LED3_SetHigh();
-//    IO_LED4_SetHigh();
-//    IO_BUZZ_SetHigh();
+#ifdef DEBUG_IO
+    IO_DRIVE_SetDigitalInput();
+    IO_LED1_SetHigh();
+    IO_LED2_SetHigh();
+    IO_LED3_SetHigh();
+    IO_LED4_SetHigh();
+    IO_BUZZ_SetHigh();
+#else
+#endif  
+    
+    IO_5V_CONV_EN_SetHigh();
+    //Start PWM module
+    PTCON = 0x8000;
 
     while (1){
         ClrWdt();
+#ifdef DEBUG_SERVO
+        if(VcuState_C.WIPER == 1){
+            PTCON = 0x8000;
+            PDC2 = WIPER_LIMIT_RIGHT;
+        }
+        
+        if(VcuState_C.WIPER == 0){
+            PTCON = 0x0000;
+        }
+#else
         if(flags.wiper_on || VcuState_C.WIPER == 1){
             WiperActions();
         }
+#endif
         
         if(flags.can_process_rec_msg == true){
             CanMessageCheck();

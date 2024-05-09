@@ -8293,7 +8293,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="SyncOutClock"/>
-         <value>100000000000</value>
+         <value>250000000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PWM" name="dutyCyclePercentage1"/>
@@ -11165,11 +11165,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PTCON2"/>
-         <value>5</value>
+         <value>4</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PTPER"/>
-         <value>40000</value>
+         <value>50000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="PWM" registerAlias="PWMCAP1"/>
@@ -11777,11 +11777,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PTCON2" settingAlias="PCLKDIV"/>
-         <value>32</value>
+         <value>16</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PTPER" settingAlias="PTPER"/>
-         <value>40000</value>
+         <value>50000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="PWM" registerAlias="PWM1I" settingAlias="context"/>
@@ -16369,7 +16369,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="CNPDB"/>
-         <value>16</value>
+         <value>8208</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="Pin Module" registerAlias="CNPDC"/>
@@ -17045,7 +17045,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="CNPDB" settingAlias="CNPDB13"/>
-         <value>disabled</value>
+         <value>enabled</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="CNPDB" settingAlias="CNPDB14"/>
@@ -19134,16 +19134,16 @@
    </tokenMap>
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
-         <file>mcc_generated_files\interrupt_manager.h</file>
-         <hash>0e807482a537e69fa2b380df16dc5cd7c06c17593c3b56d19c730965f590d26a</hash>
+         <file>mcc_generated_files\pwm_module_features.h</file>
+         <hash>376cb9dd9622efde6ab1310195ca34f802ad94bb4cd5342071ffc5f3fa393190</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\dma.c</file>
          <hash>c56c91ab6368a05d3253820eb02e746474ae2c09dc1f9f4c81c53ff33bafd6eb</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\pwm_module_features.h</file>
-         <hash>376cb9dd9622efde6ab1310195ca34f802ad94bb4cd5342071ffc5f3fa393190</hash>
+         <file>mcc_generated_files\interrupt_manager.h</file>
+         <hash>0e807482a537e69fa2b380df16dc5cd7c06c17593c3b56d19c730965f590d26a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\adc_module_features.h</file>
@@ -19171,7 +19171,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\system.c</file>
-         <hash>904a4620a99ecc4d1de3073bd79c052c2a81b545be7cff8ef19678cbe908cb33</hash>
+         <hash>472f14c592d5e91d175e0fe8832b4d31a1e8a1139f4e0ff3b0972b1ac2439b20</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clock.h</file>
@@ -19187,11 +19187,11 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pwm.c</file>
-         <hash>6d132673f168d39c08649fa381c3411a2a3d564edb5ef1a52ac271eb557a3cff</hash>
+         <hash>bc5d4c2c4c32198098e731cba5e61fbc6ae8656e8abadc0d26b79804a2e31f01</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>f9cd78a7799a9624b98e523ed7496c1c9e66d540c33f5863a7ff98d232d6a5eb</hash>
+         <hash>63a912cc43438068dbaae8736a8c135aa44fb505db4f8b68ddc84955fcafac28</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\reset.c</file>
@@ -19231,7 +19231,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\pin_manager.c</file>
-         <hash>9901375cd260c92b895e0ea397e9c4c26e48ba6e2351ed5aada20ebdf78d322f</hash>
+         <hash>f376d87266fdab348209d029a44313acfa8ae86078c850bf4efd942a698a9316</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\can1.c</file>
@@ -19247,7 +19247,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\adc1.h</file>
-         <hash>a0ad097e6703d0a6bed9458e7f05223f0c2812455edf0a2595ad3f83a3fbeb20</hash>
+         <hash>0c061111fd6a29a0fa669e68b4b96eaa3f274ee0c273d8901199fef0f3c1d7e7</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\interrupt_manager.c</file>
