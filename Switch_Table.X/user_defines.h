@@ -48,16 +48,16 @@
 
 //#define DEBUG_IO
 
-#define DEBUG_SERVO
+//#define DEBUG_SERVO
 //PWM input clock: 40MHz / 16 = 2.500.000
 //PWM period = 50.000 = 20ms
 #define SERVO_MIN                   (uint16_t)5000  // = 1ms
 #define SERVO_MAX                   (uint16_t)10000 // = 2ms
 #define SERVO_CENTER                (uint16_t)7500  // = 1.5ms
 // +/-10° =  1800?
-#define WIPER_LIMIT_RIGHT           (uint16_t)5700
-#define WIPER_LIMIT_LEFT            (uint16_t)9300
-#define WIPER_WINDSCREEN_CENTER     (uint16_t)7500
+#define WIPER_LIMIT_RIGHT           (uint16_t)1750
+#define WIPER_LIMIT_LEFT            (uint16_t)2850
+#define WIPER_WINDSCREEN_CENTER     (uint16_t)2050
 
 
 #ifdef	__cplusplus
