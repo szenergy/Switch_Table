@@ -255,9 +255,9 @@ void CanMessageCheck(void){
         
         if(RECmsg.msgId==0x10){
             if(1 & (RECmsg.data[0])){
-                IO_AUT_LIGHT_SetHigh();
+                IO_RELAY_NC_SetHigh();
             }else{
-                IO_AUT_LIGHT_SetLow();
+                IO_RELAY_NC_SetLow();   
             }
         }
     
