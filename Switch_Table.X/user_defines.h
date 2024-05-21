@@ -55,9 +55,9 @@
 #define SERVO_MAX                   (uint16_t)10000 // = 2ms
 #define SERVO_CENTER                (uint16_t)7500  // = 1.5ms
 // +/-10° =  1800?
-#define WIPER_LIMIT_RIGHT           (uint16_t)1700
-#define WIPER_LIMIT_LEFT            (uint16_t)2900
-#define WIPER_WINDSCREEN_CENTER     (uint16_t)2050
+#define WIPER_LIMIT_RIGHT           (uint16_t)5850
+#define WIPER_LIMIT_LEFT            (uint16_t)7150
+#define WIPER_WINDSCREEN_CENTER     (uint16_t)6200
 
 
 #ifdef	__cplusplus

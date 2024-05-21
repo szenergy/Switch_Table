@@ -253,13 +253,13 @@ void CanMessageCheck(void){
 //            VcuState_B.TS_R             =   RECmsg.data[1] & 0b00000010;
         }
         
-        if(RECmsg.msgId==0x10){
-            if(1 & (RECmsg.data[0])){
-                IO_RELAY_NC_SetHigh();
-            }else{
-                IO_RELAY_NC_SetLow();   
-            }
-        }
+//        if(RECmsg.msgId==0x10){
+//            if(1 & (RECmsg.data[0])){
+//                IO_RELAY_NC_SetHigh();
+//            }else{
+//                IO_RELAY_NC_SetLow();   
+//            }
+//        }
     
     }
 }
