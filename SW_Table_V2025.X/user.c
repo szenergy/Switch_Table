@@ -251,7 +251,7 @@ void StateMachineUpdate(void){
         conversion.ADC_Word = 0;
         prev_ref_conversion.ADC_Word = 0;
 //        McCommandUpdate();
-//        CanMcCommand();
+        CanMcCommand();
     }
     prev_state = current_state;
 }

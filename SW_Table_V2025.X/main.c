@@ -89,7 +89,7 @@ int main(void){
             flags.can_process_rec_msg = false;
         }
         if(flags.mc_command_update_and_send == true && VcuState_A.AUT == false){
-            IO_LED3_Toggle();
+//            IO_LED3_Toggle();
             if(!VcuState_A.MC_OW){
                 PotConversion();
                 StateMachineUpdate();
@@ -112,7 +112,7 @@ int main(void){
         if(flags.can_vcu_state == true){
 //            while((C1TR01CONbits.TXREQ0 == 1) | (C1TR01CONbits.TXABT0 == 1));
             CanVcuState();
-            CanMcCommand();
+//            CanMcCommand();
             flags.can_vcu_state = false;
         }
        
