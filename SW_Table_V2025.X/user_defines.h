@@ -37,6 +37,7 @@
 /* User Level #define Macros                                                  */
 /******************************************************************************/
 // Configuration defines
+#define M_PI                               3.14159265358979323846
 #define EMA_A                       (float)0.4 //analog láb gaz_pot 
 #define ZERO_REF                    (uint16_t)2600
 #define MAX_REF                     (uint16_t)2825
@@ -45,6 +46,7 @@
 #define RATE_LIMIT_DOWN             (uint16_t)500
 #define DEBOUNCE_TIME_MS            (uint8_t)2
 #define WIPER_PERIOD                (uint16_t)4000 //time in ms
+#define SPEED_MULT_FACTOR           (double)(M_PI*0.5586*3.6)/60
 
 //#define DEBUG_IO
 

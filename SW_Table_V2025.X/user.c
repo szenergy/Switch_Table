@@ -6,6 +6,9 @@
  */
 
 #include "user.h"
+#include "mcc_generated_files/can1.h"
+#include "mcc_generated_files/can_module_features.h"
+#include "mcc_generated_files/can_types.h"
 
 
 //#define TESTING
@@ -24,7 +27,7 @@ volatile ST_STATE_D StState_D;
 
 volatile MC_Bytes MC_REF;
 volatile CAN_Bytes battery_voltage;
-//volatile CAN_Bytes rpm;
+volatile CAN_Bytes rpm;
 volatile double mc_duty_cycle;
 volatile int32_t mc_data_buffer;
 
@@ -37,7 +40,7 @@ volatile CAN_MSG_OBJ MCmsg;
 volatile CAN_MSG_OBJ RECmsg;
 
 volatile struct FLAGS flags;
-//volatile struct VEHICLE vehicle;
+volatile struct VEHICLE vehicle;
 
 //uint8_t data_test[8];
 volatile uint8_t data_mc[4];
@@ -129,6 +132,10 @@ void VariableInit(void){
     flags.wiper_on                                  = false;
     flags.wiper_move                                = false;
     flags.pgood                                     = false;
+    vehicle.distance = 0;
+//    vehicle.prev_distance = 0;
+    vehicle.speed = 0;
+    vehicle.rpm = 0;
 }
 
 
@@ -147,6 +154,10 @@ void PortStatusUpdate(void){
     }else{
         BREAK_OUT_SetHigh();
     }
+    
+    if(VcuState_B.RELAY_NO ==1){
+            VcuState_A.MC_OW = 0;
+            }
     }
     
 void CanMessageCheck(void){
@@ -164,9 +175,29 @@ void CanMessageCheck(void){
             StState_B.ST_bits_2 = RECmsg.data[1];
             StState_C.ST_bits_3 = RECmsg.data[2];
             StState_D.ST_bits_4 = RECmsg.data[3];
+            
+            if(VcuState_B.RELAY_NO ==1){
+                StState_A.ACC = 0;
+                StState_A.DRIVE = 0;
+                StState_A.REVERSE = 0;
+            }
+        }
+        if(RECmsg.msgId==0x123){
+            rpm.HighByte = RECmsg.data[0];
+            rpm.LowByte = RECmsg.data[1];
+            vehicle.rpm = rpm.Word/100;
         }
     }
 }
+
+void CalculateSpeed(void){
+    vehicle.speed = vehicle.rpm * SPEED_MULT_FACTOR;
+}
+
+//void CalculateDistance(void){
+//    vehicle.distance += ((vehicle.speed*100)/3600); //values in cms | 72 if we use it every 50 ms
+                                              //3600 if we use it every 1 ms
+//}
 
 void CanVcuState(void){
     
@@ -256,10 +287,6 @@ void StateMachineUpdate(void){
     prev_state = current_state;
 }
 
-//void CalculateMCRef(void){
-//
-//    conversion.ADC_Word = 1023;
-//}
 
 void PotConversion(void){
     ADC1_Enable();
@@ -368,6 +395,61 @@ void RateLimiter(void){
     prev_ref_conversion.ADC_Word = conversion.ADC_Word;
 }
 
+void CalculateMCRef(void){
+    switch(StState_B.ST_bits_2){
+        case 0:
+                conversion.ADC_Word = 1023;
+            break;
+            
+        case 1:
+            
+                conversion.ADC_Word = 1023;
+            
+            break;
+            
+        case 2:
+
+                conversion.ADC_Word = 1023;
+
+                break;
+
+        case 4:
+
+                conversion.ADC_Word = 1023;
+
+                break;
+        case 8:
+
+                conversion.ADC_Word = 1023;
+
+                break;
+        case 16:
+            if(vehicle.speed >= 5 ){
+                conversion.ADC_Word = 409;
+            }else{
+                conversion.ADC_Word = 1023;
+            }
+                break;
+        case 32:
+
+                conversion.ADC_Word = 818;
+                
+                break;
+        case 64:
+            
+                conversion.ADC_Word = 920;
+                   
+            break;
+
+            default:
+                conversion.ADC_Word = 0;
+            break;
+        }
+    
+//    conversion.ADC_Word = 1023;
+
+}
+
 void GoToSleep(void){
     //add lines if necessary
     //RCONbits.SLEEP = 0;
@@ -458,10 +540,6 @@ void WiperActions(void){
             break;
         default:
             break;
-    }
+    }   
 }
 
-
-/**
- End of File
-*/

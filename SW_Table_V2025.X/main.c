@@ -89,14 +89,14 @@ int main(void){
             flags.can_process_rec_msg = false;
         }
         if(flags.mc_command_update_and_send == true && VcuState_A.AUT == false){
-//            IO_LED3_Toggle();
             if(!VcuState_A.MC_OW){
                 PotConversion();
                 StateMachineUpdate();
                 if(current_state != Neutral){
                     if(current_state == Automatic_Acc || current_state == Automatic_Dec){
-//                        CalculateMCRef();
-                        conversion.ADC_Word = 1023;
+                        CalculateSpeed();
+                        CalculateMCRef();
+//                        conversion.ADC_Word = 1023;
                     }
                     RateLimiter();
 //                    McCommandUpdate();
@@ -105,10 +105,14 @@ int main(void){
             }else{
                PotConversion();
 //               McCommandUpdate();
-               CanMcCommand();
+               //CanMcCommand();
             }
             flags.mc_command_update_and_send = false;
+        }else{
+           // PotConversion();
+            
         }
+        
         if(flags.can_vcu_state == true){
 //            while((C1TR01CONbits.TXREQ0 == 1) | (C1TR01CONbits.TXABT0 == 1));
             CanVcuState();
@@ -123,9 +127,9 @@ int main(void){
        
 
         if(CAN1_IsRXErrorPassive() || CAN1_IsTXErrorPassive()){
-            IO_LED2_SetHigh(); //uncomment after testing
+            //IO_LED2_SetHigh(); //uncomment after testing
         }else{
-            IO_LED2_SetLow(); //uncomment after testing
+            //IO_LED2_SetLow(); //uncomment after testing
         }
 
 //        GoToSleep();

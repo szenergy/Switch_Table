@@ -137,6 +137,13 @@ typedef union __attribute__(())
     };
 }ADC_Bytes;
 
+struct VEHICLE{
+    double rpm;
+    double speed;
+    double distance;
+//    double prev_distance;
+};
+
 struct FLAGS{
     bool port_status_update;
     bool can_process_rec_msg;
@@ -164,7 +171,7 @@ extern volatile ST_STATE_C StState_C;
 extern volatile ST_STATE_D StState_D;
 
 extern volatile struct FLAGS flags;
-//extern volatile struct VEHICLE vehicle;
+extern volatile struct VEHICLE vehicle;
 
 extern volatile enum StateMachine current_state;
 extern volatile enum StateMachine prev_state;
@@ -191,7 +198,7 @@ extern volatile uint16_t adc_delay_counter;
 extern volatile CAN_Bytes battery_voltage;
 
 extern volatile CAN_Bytes battery_voltage;
-//extern volatile CAN_Bytes rpm;
+extern volatile CAN_Bytes rpm;
 //extern volatile uint16_t CanCounter;
 
 extern volatile bool prev_DC_EN;
@@ -221,6 +228,7 @@ void TimerProcesses(void);
 void WiperActions(void);
 void StateMachineUpdate(void);
 void RateLimiter(void);
+void CalculateSpeed(void);
 
 #endif	/* USER_H */
 
