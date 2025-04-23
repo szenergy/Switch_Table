@@ -1662,6 +1662,152 @@
 #define IO_WIPER_SetDigitalOutput() (_TRISC11 = 0)
 /**
   @Summary
+    Sets the GPIO pin, RC13, high using LATC13.
+
+  @Description
+    Sets the GPIO pin, RC13, high using LATC13.
+
+  @Preconditions
+    The RC13 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC13 high (1)
+    IO_SHELL_RELAY_SetHigh();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_SetHigh()          (_LATC13 = 1)
+/**
+  @Summary
+    Sets the GPIO pin, RC13, low using LATC13.
+
+  @Description
+    Sets the GPIO pin, RC13, low using LATC13.
+
+  @Preconditions
+    The RC13 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC13 low (0)
+    IO_SHELL_RELAY_SetLow();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_SetLow()           (_LATC13 = 0)
+/**
+  @Summary
+    Toggles the GPIO pin, RC13, using LATC13.
+
+  @Description
+    Toggles the GPIO pin, RC13, using LATC13.
+
+  @Preconditions
+    The RC13 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RC13
+    IO_SHELL_RELAY_Toggle();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_Toggle()           (_LATC13 ^= 1)
+/**
+  @Summary
+    Reads the value of the GPIO pin, RC13.
+
+  @Description
+    Reads the value of the GPIO pin, RC13.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RC13
+    postValue = IO_SHELL_RELAY_GetValue();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_GetValue()         _RC13
+/**
+  @Summary
+    Configures the GPIO pin, RC13, as an input.
+
+  @Description
+    Configures the GPIO pin, RC13, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC13 as an input
+    IO_SHELL_RELAY_SetDigitalInput();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_SetDigitalInput()  (_TRISC13 = 1)
+/**
+  @Summary
+    Configures the GPIO pin, RC13, as an output.
+
+  @Description
+    Configures the GPIO pin, RC13, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC13 as an output
+    IO_SHELL_RELAY_SetDigitalOutput();
+    </code>
+
+*/
+#define IO_SHELL_RELAY_SetDigitalOutput() (_TRISC13 = 0)
+/**
+  @Summary
     Sets the GPIO pin, RC3, high using LATC3.
 
   @Description
