@@ -45,7 +45,8 @@
 #define RATE_LIMIT_UP               (uint16_t)51 //motor reference limit per 50ms
 #define RATE_LIMIT_DOWN             (uint16_t)500
 #define DEBOUNCE_TIME_MS            (uint8_t)2
-#define WIPER_PERIOD                (uint16_t)4000 //time in ms
+#define WIPER_PERIOD                (uint16_t)2000 //time in ms
+#define WIPER_STEP                  (uint16_t)15   //servo 1 step time
 #define SPEED_MULT_FACTOR           (double)(M_PI*0.5586*3.6)/60
 
 //#define DEBUG_IO
@@ -57,8 +58,8 @@
 #define SERVO_MAX                   (uint16_t)10000 // = 2ms
 #define SERVO_CENTER                (uint16_t)7500  // = 1.5ms
 // +/-10° =  1800?
-#define WIPER_LIMIT_RIGHT           (uint16_t)11600     //11800
-#define WIPER_LIMIT_LEFT            (uint16_t)16000     //16000 
+//#define WIPER_LIMIT_RIGHT           (uint16_t)11600     //11800 old wiper control
+//#define WIPER_LIMIT_LEFT            (uint16_t)16000     //16000 
 #define WIPER_WINDSCREEN_CENTER     (uint16_t)12100     //15800
 
 

@@ -63,9 +63,9 @@ int main(void){
 #else
 #endif  
     
-    IO_WIPER_CONV_EN_SetHigh();
-    //Start PWM module
-    PTCON = 0x8000;
+//    IO_WIPER_CONV_EN_SetHigh();
+//    //Start PWM module
+//    PTCON = 0x8000;
 
     while (1){
         ClrWdt();

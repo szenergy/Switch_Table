@@ -1,6 +1,9 @@
 #ifndef USER_H
 #define	USER_H
 
+#define WIPER_CODE
+
+
 #include <xc.h> // include processor files - each processor file is guarded.
 #include <stdbool.h>
 #include "user_defines.h"
@@ -19,7 +22,7 @@ typedef union  __attribute__(())
     uint8_t VCUBits_1;
     struct
     {
-        uint8_t LIGHTS          :1;
+        uint8_t FUNCTION          :1;
         uint8_t HAZARD          :1;
         uint8_t AUT             :1;
         uint8_t BRAKE           :1;
@@ -163,6 +166,8 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // User exported global variables
 // ******************************
 
+extern float WIPER_LEFT_X[100];
+
 extern volatile VCU_STATE_A VcuState_A;
 extern volatile VCU_STATE_B VcuState_B;
 extern volatile ST_STATE_A StState_A;
@@ -211,6 +216,8 @@ extern volatile uint16_t ema_s;
 
 //Right_state = 0; Left_State = 1;
 extern volatile uint8_t wiper_state;
+extern volatile uint16_t wiper_step_cnt;
+extern volatile uint16_t wiper_step_time;;
 // ******************************
 // User exported function prototypes
 // ******************************

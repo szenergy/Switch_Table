@@ -1825,11 +1825,11 @@
   @Example
     <code>
     // Set RC3 high (1)
-    IO_LIGHTS_SetHigh();
+    IO_FUNCTION_SetHigh();
     </code>
 
 */
-#define IO_LIGHTS_SetHigh()          (_LATC3 = 1)
+#define IO_FUNCTION_SetHigh()          (_LATC3 = 1)
 /**
   @Summary
     Sets the GPIO pin, RC3, low using LATC3.
@@ -1849,11 +1849,11 @@
   @Example
     <code>
     // Set RC3 low (0)
-    IO_LIGHTS_SetLow();
+    IO_FUNCTION_SetLow();
     </code>
 
 */
-#define IO_LIGHTS_SetLow()           (_LATC3 = 0)
+#define IO_FUNCTION_SetLow()           (_LATC3 = 0)
 /**
   @Summary
     Toggles the GPIO pin, RC3, using LATC3.
@@ -1873,11 +1873,11 @@
   @Example
     <code>
     // Toggle RC3
-    IO_LIGHTS_Toggle();
+    IO_FUNCTION_Toggle();
     </code>
 
 */
-#define IO_LIGHTS_Toggle()           (_LATC3 ^= 1)
+#define IO_FUNCTION_Toggle()           (_LATC3 ^= 1)
 /**
   @Summary
     Reads the value of the GPIO pin, RC3.
@@ -1899,11 +1899,11 @@
     uint16_t portValue;
 
     // Read RC3
-    postValue = IO_LIGHTS_GetValue();
+    postValue = IO_FUNCTION_GetValue();
     </code>
 
 */
-#define IO_LIGHTS_GetValue()         _RC3
+#define IO_FUNCTION_GetValue()         _RC3
 /**
   @Summary
     Configures the GPIO pin, RC3, as an input.
@@ -1923,11 +1923,11 @@
   @Example
     <code>
     // Sets the RC3 as an input
-    IO_LIGHTS_SetDigitalInput();
+    IO_FUNCTION_SetDigitalInput();
     </code>
 
 */
-#define IO_LIGHTS_SetDigitalInput()  (_TRISC3 = 1)
+#define IO_FUNCTION_SetDigitalInput()  (_TRISC3 = 1)
 /**
   @Summary
     Configures the GPIO pin, RC3, as an output.
@@ -1947,11 +1947,11 @@
   @Example
     <code>
     // Sets the RC3 as an output
-    IO_LIGHTS_SetDigitalOutput();
+    IO_FUNCTION_SetDigitalOutput();
     </code>
 
 */
-#define IO_LIGHTS_SetDigitalOutput() (_TRISC3 = 0)
+#define IO_FUNCTION_SetDigitalOutput() (_TRISC3 = 0)
 /**
   @Summary
     Sets the GPIO pin, RC4, high using LATC4.
