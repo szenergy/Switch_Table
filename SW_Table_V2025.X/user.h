@@ -22,7 +22,7 @@ typedef union  __attribute__(())
     uint8_t VCUBits_1;
     struct
     {
-        uint8_t FUNCTION          :1;
+        uint8_t FUNCTION        :1;
         uint8_t HAZARD          :1;
         uint8_t AUT             :1;
         uint8_t BRAKE           :1;
@@ -166,7 +166,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // User exported global variables
 // ******************************
 
-extern float WIPER_LEFT_X[100];
+extern float WIPER_LEFT_X[80];
 
 extern volatile VCU_STATE_A VcuState_A;
 extern volatile VCU_STATE_B VcuState_B;

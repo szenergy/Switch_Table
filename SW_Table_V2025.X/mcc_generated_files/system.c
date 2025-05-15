@@ -111,10 +111,10 @@
 #include "interrupt_manager.h"
 #include "traps.h"
 #include "can1.h"
-#include "pwm.h"
 #include "tmr1.h"
-#include "adc1.h"
 #include "dma.h"
+#include "adc1.h"
+#include "pwm.h"
 
 void SYSTEM_Initialize(void)
 {

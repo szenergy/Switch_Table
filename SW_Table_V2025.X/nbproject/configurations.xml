@@ -474,7 +474,7 @@
         <property key="memories.programmemory.ranges" value="0-2ab7f"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmerToGoFilePath"
-                  value="D:/M.Mate/SourceControl/SW_Table/SW_Table_V2025.X/debug/default/SW_Tablev2_v2_ptg"/>
+                  value="F:/SW_Table_V4_CAN_WIPER_ST_2.X/debug/default/SW_Tablev2_v2_ptg"/>
         <property key="programmerToGoImageName" value="SW_Tablev2_v2_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
