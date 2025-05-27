@@ -188,6 +188,7 @@ void PortStatusUpdate(void){
     VcuState_A.FUNCTION = IO_FUNCTION_GetValue();
     VcuState_A.MC_OW    = IO_MC_OW_GetValue();
     VcuState_A.WIPER    = IO_WIPER_GetValue();
+    VcuState_B.RELAY_NO = IO_SHELL_C1_GetValue();
     
     if(VcuState_A.BRAKE == 1){
         BREAK_OUT_SetLow();
@@ -195,7 +196,7 @@ void PortStatusUpdate(void){
         BREAK_OUT_SetHigh();
     }
     
-    if(VcuState_B.RELAY_NO ==1){
+    if(VcuState_B.RELAY_NO == 1){
             VcuState_A.MC_OW = 0;
             }
 //    if(VcuState_A.AUT == 1){                  //Shell_Relay_Test
@@ -233,7 +234,7 @@ void CanMessageCheck(void){
             vehicle.rpm = rpm.Word/100;
         }
         if(RECmsg.msgId==0x10){
-            if(1 & (RECmsg.data[0])){
+            if(1 & RECmsg.data[0]){
                 IO_SHELL_RELAY_SetHigh();
             }else{
                 IO_SHELL_RELAY_SetLow();

@@ -251,7 +251,7 @@ void CAN1_Initialize(void)
     C1FMSKSEL1bits.F0MSK = 0x0; //Select Mask 0 for Filter 0
     
     /* Configure the masks */
-    C1RXM0SIDbits.SID = 0x742; 
+    C1RXM0SIDbits.SID = 0x642; 
     C1RXM1SIDbits.SID = 0x0; 
     C1RXM2SIDbits.SID = 0x0; 
     
