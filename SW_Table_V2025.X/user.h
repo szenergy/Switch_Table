@@ -167,6 +167,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // ******************************
 
 extern float WIPER_LEFT_X[100];
+extern float LUT_MOTOR_EF[386];
 
 extern volatile VCU_STATE_A VcuState_A;
 extern volatile VCU_STATE_B VcuState_B;
@@ -205,6 +206,7 @@ extern volatile CAN_Bytes battery_voltage;
 extern volatile CAN_Bytes battery_voltage;
 extern volatile CAN_Bytes rpm;
 //extern volatile uint16_t CanCounter;
+extern volatile uint8_t rpm_rnd;
 
 extern volatile bool prev_DC_EN;
 extern volatile bool PGOOD;
