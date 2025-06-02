@@ -166,7 +166,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // User exported global variables
 // ******************************
 
-extern float WIPER_LEFT_X[80];
+extern float WIPER_LEFT_X[100];
 
 extern volatile VCU_STATE_A VcuState_A;
 extern volatile VCU_STATE_B VcuState_B;

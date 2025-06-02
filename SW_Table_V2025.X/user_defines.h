@@ -45,8 +45,8 @@
 #define RATE_LIMIT_UP               (uint16_t)51 //motor reference limit per 50ms
 #define RATE_LIMIT_DOWN             (uint16_t)500
 #define DEBOUNCE_TIME_MS            (uint8_t)2
-#define WIPER_PERIOD                (uint16_t)2000 //time in ms
-#define WIPER_STEP                  (uint16_t)20   //servo 1 step time
+#define WIPER_PERIOD                (uint16_t)1000 //time in ms
+#define WIPER_STEP                  (uint16_t)(WIPER_PERIOD/101)   //servo 1 step time
 #define SPEED_MULT_FACTOR           (double)(M_PI*0.5586*3.6)/60
 
 //#define DEBUG_IO

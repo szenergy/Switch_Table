@@ -108,19 +108,19 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "adc1.h"
 #include "tmr1.h"
-#include "dma.h"
 #include "pwm.h"
+#include "adc1.h"
+#include "dma.h"
+#include "can1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "can1.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     ADC1_Initialize();
     PWM_Initialize();
     CAN1_Initialize();

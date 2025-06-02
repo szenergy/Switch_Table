@@ -2847,11 +2847,11 @@
   @Example
     <code>
     // Set RE15 high (1)
-    IO_RELAY_NO_SetHigh();
+    IO_CLUTCH_SetHigh();
     </code>
 
 */
-#define IO_RELAY_NO_SetHigh()          (_LATE15 = 1)
+#define IO_CLUTCH_SetHigh()          (_LATE15 = 1)
 /**
   @Summary
     Sets the GPIO pin, RE15, low using LATE15.
@@ -2871,11 +2871,11 @@
   @Example
     <code>
     // Set RE15 low (0)
-    IO_RELAY_NO_SetLow();
+    IO_CLUTCH_SetLow();
     </code>
 
 */
-#define IO_RELAY_NO_SetLow()           (_LATE15 = 0)
+#define IO_CLUTCH_SetLow()           (_LATE15 = 0)
 /**
   @Summary
     Toggles the GPIO pin, RE15, using LATE15.
@@ -2895,11 +2895,11 @@
   @Example
     <code>
     // Toggle RE15
-    IO_RELAY_NO_Toggle();
+    IO_CLUTCH_Toggle();
     </code>
 
 */
-#define IO_RELAY_NO_Toggle()           (_LATE15 ^= 1)
+#define IO_CLUTCH_Toggle()           (_LATE15 ^= 1)
 /**
   @Summary
     Reads the value of the GPIO pin, RE15.
@@ -2921,11 +2921,11 @@
     uint16_t portValue;
 
     // Read RE15
-    postValue = IO_RELAY_NO_GetValue();
+    postValue = IO_CLUTCH_GetValue();
     </code>
 
 */
-#define IO_RELAY_NO_GetValue()         _RE15
+#define IO_CLUTCH_GetValue()         _RE15
 /**
   @Summary
     Configures the GPIO pin, RE15, as an input.
@@ -2945,11 +2945,11 @@
   @Example
     <code>
     // Sets the RE15 as an input
-    IO_RELAY_NO_SetDigitalInput();
+    IO_CLUTCH_SetDigitalInput();
     </code>
 
 */
-#define IO_RELAY_NO_SetDigitalInput()  (_TRISE15 = 1)
+#define IO_CLUTCH_SetDigitalInput()  (_TRISE15 = 1)
 /**
   @Summary
     Configures the GPIO pin, RE15, as an output.
@@ -2969,11 +2969,11 @@
   @Example
     <code>
     // Sets the RE15 as an output
-    IO_RELAY_NO_SetDigitalOutput();
+    IO_CLUTCH_SetDigitalOutput();
     </code>
 
 */
-#define IO_RELAY_NO_SetDigitalOutput() (_TRISE15 = 0)
+#define IO_CLUTCH_SetDigitalOutput() (_TRISE15 = 0)
 /**
   @Summary
     Sets the GPIO pin, RG6, high using LATG6.
