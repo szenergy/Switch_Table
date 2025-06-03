@@ -92,10 +92,6 @@ volatile uint16_t counter_pgood_led_500ms = 0;
 
 volatile uint8_t rpm_rnd;
 
-
-volatile enum StateMachine current_state;
-volatile enum StateMachine prev_state;
-
 float WIPER_LEFT_X[100] = {
 11600.0000, 11606.8157, 11614.1350, 11621.9937, 11630.4305, 11639.4870, 11649.2076, 11659.6404, 
 11670.8366, 11682.8511, 11695.7425, 11709.5734, 11724.4103, 11740.3240, 11757.3894, 11775.6857, 
@@ -112,9 +108,8 @@ float WIPER_LEFT_X[100] = {
 15969.5695, 15978.0063, 15985.8650, 15993.1843, 16000.0000
 }; //full wiper period tanh(2sin(x))
 
-//This LUT for set the thrutle referenc
-
-float LUT_MOTOR_EF[386] = {
+//This LUT for set the throttle reference
+float LUT_MOTOR_EF[386]  = {
     0.0, 0.229248904, 0.229701676, 0.230154449, 0.230607221, 0.231059993, 0.23150927, 0.231909184,
     0.232309097, 0.23270901, 0.233108924, 0.23353682, 0.233977995, 0.234419169, 0.234860344,
     0.235301519, 0.235742693, 0.236183868, 0.236625042, 0.237066217, 0.237507392, 0.237948566,
@@ -173,7 +168,8 @@ float LUT_MOTOR_EF[386] = {
     0.677089741
 };
 
-
+volatile enum StateMachine current_state;
+volatile enum StateMachine prev_state;
 
 // ******************************
 // User functions
@@ -562,7 +558,7 @@ void GoToSleep(void){
     IPC1bits.DMA0IP = 0;
     IPC6bits.DMA2IP = 0;
     //ADC disabled in idle ADSIDL = 1
-    Idle();   
+    Idle();
 }
 
 void ReturnFromSleep(void){
@@ -579,78 +575,12 @@ void ReturnFromSleep(void){
 }
 
 void WiperActions(void){
-    #ifndef WIPER_CODE
-    
-//    switch(wiper_state){
-//        case 0: //STBY
-//            if(VcuState_A.WIPER == 1){
-//                wiper_state = 1;
-//            }
-//            break;
-//        case 1: //READY
-////            Enable Converter
-//            IO_WIPER_CONV_EN_SetHigh();
-////            Start PWM module
-//            PTCON = 0x8000;
-////            Start Timer
-//            flags.wiper_on = true;
-//            if(flags.wiper_move == true)
-//            {
-//                wiper_state = 2;
-//                flags.wiper_move = false;
-//            }
-//            break;
-//        case 2: // Right
-//            PDC2 = WIPER_LIMIT_RIGHT;
-//            if(VcuState_A.WIPER == 0)
-//            {
-//                wiper_state = 4;
-//            }
-//            if(flags.wiper_move == true)
-//            {
-//                wiper_state = 3;
-//                flags.wiper_move = false;
-//            }
-//            break;
-//        case 3: // Left
-//            PDC2 = WIPER_LIMIT_LEFT;
-//            if(VcuState_A.WIPER == 0)
-//            {
-//                wiper_state = 4;
-//            }
-//            if(flags.wiper_move == true)
-//            {
-//                wiper_state = 2;
-//                flags.wiper_move = false;
-//            }
-//            break; 
-//        case 4: // Center and ready to SW OFF
-//            if(flags.wiper_move == true)
-//            {
-//                PDC2 = WIPER_WINDSCREEN_CENTER;
-//                flags.wiper_move = false;
-//                wiper_state = 5;
-//            }
-//        case 5: // ALL OFF
-//            if(flags.wiper_move == true){
-//                //Turn OFF PWM Module
-//                PTCON = 0x0000;
-//                //Disable Wiper Timer Counter
-//                flags.wiper_on = false;
-//                flags.wiper_move = false;
-//                //Disable 5V Converter
-//                IO_WIPER_CONV_EN_SetLow();
-//                wiper_state = 0;
-//            }
-//            break;
-//        default:
-//            break;
-//        }
-        #else
+  
             switch(wiper_state){
              case 0: //STBY
                 if(VcuState_A.WIPER == 1){
                     wiper_state = 1;
+                    PWM_Initialize();
                 }
                 break;
             case 1: //READY
@@ -672,7 +602,7 @@ void WiperActions(void){
                 {
                 wiper_state = 4;
                 }
-                if(wiper_step_cnt >= 79){
+                if(wiper_step_cnt >= 99){
                     wiper_state = 3;
                     flags.wiper_move = false;
                 }
@@ -714,7 +644,7 @@ void WiperActions(void){
                 break;
             }
                 
-        #endif
+    
     
 }
 

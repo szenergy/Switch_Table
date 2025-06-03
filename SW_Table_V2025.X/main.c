@@ -20,17 +20,20 @@
  * 12bit ADC for:
  *      Analog potmeter - foot
  * 
- * Measured current consumption @48VDC - 5,8 mA
- * Calculated power = 0,2784 W
+ * Measured current consumption @48VDC - 4,9 mA
+ * Calculated power = 0,2352 W
  * 
- * Not-used modules OFF:
- * @48VDC - 5,4 mA
- * Calculated power = 0,2592 W
- * 
- * CLK reduced to 40MHz:
- * @48VDC - 4,2 mA
- * Calculated power = 0,2016 W
+ * Added Sleeping - Level: Idle
+ * Measured current consumption @48VDC - 2,3 mA
+ * Calculated power = 0,1104 W
  *
+ *  DOZE = the bandgap and system oscillators continue to operate, 
+ *  while only the CPU and PFM are affected.
+ *  the CPU executes only one instruction cycle out of every N cycles as 
+ *  NO Idle, but DOZE 
+ *  Measured current consumption @48VDC - 2,7 mA
+ *  Calculated power = 0,1296 W
+ * 
  * Created on 2020. april 14., 10:40
  * Created by Peter Gulyas
  */
@@ -69,6 +72,8 @@ int main(void){
 
     while (1){
         ClrWdt();
+//        CLKDIVbits.ROI = 0;      // Interrupts not removing the CPU from DOZE mode
+            
 #ifdef DEBUG_SERVO
         if(VcuState_C.WIPER == 1){
             PTCON = 0x8000;
@@ -80,8 +85,11 @@ int main(void){
         }
 #else
         if(flags.wiper_on || VcuState_A.WIPER == 1){
+            PMD1bits.PWMMD = 0; 
             WiperActions();
-        }
+        }else{
+            PMD1bits.PWMMD = 1; 
+        } 
 #endif
         
         if(flags.can_process_rec_msg == true){
@@ -132,8 +140,8 @@ int main(void){
             //IO_LED2_SetLow(); //uncomment after testing
         }
 
-//        GoToSleep();
-//        ReturnFromSleep();
+        GoToSleep();
+        ReturnFromSleep();
     }
 }
 // END - Main application

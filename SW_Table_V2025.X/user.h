@@ -167,6 +167,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // ******************************
 
 extern float WIPER_LEFT_X[100];
+//This LUT for set the throttle reference
 extern float LUT_MOTOR_EF[386];
 
 extern volatile VCU_STATE_A VcuState_A;
