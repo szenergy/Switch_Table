@@ -207,7 +207,7 @@ extern volatile CAN_Bytes battery_voltage;
 extern volatile CAN_Bytes battery_voltage;
 extern volatile CAN_Bytes rpm;
 //extern volatile uint16_t CanCounter;
-extern volatile uint8_t rpm_rnd;
+extern volatile uint16_t rpm_rnd;
 
 extern volatile bool prev_DC_EN;
 extern volatile bool PGOOD;
