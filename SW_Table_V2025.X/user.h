@@ -1,8 +1,14 @@
 #ifndef USER_H
 #define	USER_H
 
-#define WIPER_CODE
+#define WIPER_CODE_NEW
+#ifndef WIPER_CODE_NEW
+#define WIPER_CODE_OLD
+#endif
 
+//#define CALCULATE_DISTANCE // not used yet
+//#define SHELL_RELAY_TEST     //Shell Relay Test with AUT swich
+//#define NOT_USED_VARIABLES
 
 #include <xc.h> // include processor files - each processor file is guarded.
 #include <stdbool.h>
@@ -166,7 +172,7 @@ enum StateMachine {Neutral, Drive_Pedal, Reverse_Pedal, Automatic_Acc, Automatic
 // User exported global variables
 // ******************************
 
-extern float WIPER_LEFT_X[100];
+extern float WIPER_MAP[100];
 //This LUT for set the throttle reference
 extern float LUT_MOTOR_EF[386];
 

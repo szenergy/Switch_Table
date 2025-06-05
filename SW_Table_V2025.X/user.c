@@ -47,20 +47,12 @@ volatile uint8_t data_mc[4];
 volatile uint8_t data_vcu_state[4];
 volatile uint8_t data_rec_message[8];
 
-//volatile float DISTANCE_STEP;
-//volatile uint16_t battery_Voltage; 
 volatile uint8_t countdown_battery_low;
 volatile uint8_t counter_can_tx_100ms;
 volatile uint8_t debounce_ms_counter;
 volatile uint8_t debounce_timestamp;
-//double SPEED_MULT_FACTOR;
-//uint8_t LUT_DISTANCE_RESOLUTION;
-//uint16_t LUT_SIZE;
-//uint16_t RATE_LIMIT; 
-//bool lut_buffer;
-//int16_t acceleration_rate;
 volatile uint16_t systemTimer; //for testing
-//volatile uint16_t CanCounter;
+
 
 volatile bool prev_DC_EN;
 volatile bool PGOOD;
@@ -71,11 +63,6 @@ volatile ADC_Bytes prev_conversion;
 volatile ADC_Bytes prev_ref_conversion;
 volatile uint16_t adc_delay_counter;
 
-
-//volatile uint16_t STEP;
-//volatile uint16_t ZERO_REF;
-//volatile uint16_t MAX_REF;
-//extern uint8_t REF;
 
 //volatile float EMA_A;
 volatile uint16_t ema_s;
@@ -92,23 +79,20 @@ volatile uint16_t counter_pgood_led_500ms = 0;
 
 volatile uint16_t rpm_rnd;
 
-//float WIPER_LEFT_X[100] = {
-//11600.0000, 11606.8157, 11614.1350, 11621.9937, 11630.4305, 11639.4870, 11649.2076, 11659.6404, 
-//11670.8366, 11682.8511, 11695.7425, 11709.5734, 11724.4103, 11740.3240, 11757.3894, 11775.6857, 
-//11795.2967, 11816.3099, 11838.8174, 11862.9151, 11888.7025, 11916.2825, 11945.7609, 11977.2455, 
-//12010.8456, 12046.6711, 12084.8311, 12125.4330, 12168.5806, 12214.3730, 12262.9022, 12314.2513, 
-//12368.4926, 12425.6847, 12485.8707, 12549.0755, 12615.3034, 12684.5360, 12756.7298, 12831.8147, 
-//12909.6921, 12990.2346, 13073.2846, 13158.6551, 13246.1305, 13335.4676, 13426.3984, 13518.6326, 
-//13611.8614, 13705.7616, 13800.0000, 13894.2384, 13988.1386, 14081.3674, 14173.6016, 14264.5324, 
-//14353.8695, 14441.3449, 14526.7154, 14609.7654, 14690.3079, 14768.1853, 14843.2702, 14915.4640, 
-//14984.6966, 15050.9245, 15114.1293, 15174.3153, 15231.5074, 15285.7487, 15337.0978, 15385.6270, 
-//15431.4194, 15474.5670, 15515.1689, 15553.3289, 15589.1544, 15622.7545, 15654.2391, 15683.7175, 
-//15711.2975, 15737.0849, 15761.1826, 15783.6901, 15804.7033, 15824.3143, 15842.6106, 15859.6760, 
-//15875.5897, 15890.4266, 15904.2575, 15917.1489, 15929.1634, 15940.3596, 15950.7924, 15960.5130, 
-//15969.5695, 15978.0063, 15985.8650, 15993.1843, 16000.0000
-//}; //full wiper period tanh(2sin(x))
+#ifdef NOT_USED_VARIABLES
 
-float WIPER_LEFT_X[100] = {
+extern uint8_t REF;
+volatile float DISTANCE_STEP;
+volatile uint16_t battery_Voltage; 
+uint8_t LUT_DISTANCE_RESOLUTION;
+uint16_t LUT_SIZE;
+uint16_t RATE_LIMIT; 
+bool lut_buffer;
+int16_t acceleration_rate;
+volatile uint16_t CanCounter;
+#endif
+
+float WIPER_MAP[100] = {
 14900.0000, 14906.8157, 14914.1350, 14921.9937, 14930.4305, 14939.4870, 14949.2076, 14959.6404,
 14970.8366, 14982.8511, 14995.7425, 15009.5734, 15024.4103, 15040.3240, 15057.3894, 15075.6857,
 15095.2967, 15116.3099, 15138.8174, 15162.9151, 15188.7025, 15216.2825, 15245.7609, 15277.2455,
@@ -229,7 +213,6 @@ void VariableInit(void){
     flags.wiper_move                                = false;
     flags.pgood                                     = false;
     vehicle.distance = 0;
-//    vehicle.prev_distance = 0;
     vehicle.speed = 0;
     vehicle.rpm = 0;
 }
@@ -255,13 +238,15 @@ void PortStatusUpdate(void){
     if(VcuState_B.RELAY_NO == 1){
             VcuState_A.MC_OW = 0;
             }
-//    if(VcuState_A.AUT == 1){                  //Shell_Relay_Test
-//        IO_SHELL_RELAY_SetHigh();
-//    }else{
-//        IO_SHELL_RELAY_SetLow();
-//    }
+#ifdef SHELL_RELAY_TEST
+    if(VcuState_A.AUT == 1){                  //Shell_Relay_Test
+        IO_SHELL_RELAY_SetHigh();
+    }else{
+        IO_SHELL_RELAY_SetLow();
     }
-    
+#endif 
+    }
+  
 void CanMessageCheck(void){
     // Receive CAN messages and store their data
     RECmsg.data = data_rec_message;
@@ -303,10 +288,12 @@ void CalculateSpeed(void){
     vehicle.speed = vehicle.rpm * SPEED_MULT_FACTOR;
 }
 
-//void CalculateDistance(void){
-//    vehicle.distance += ((vehicle.speed*100)/3600); //values in cms | 72 if we use it every 50 ms
-                                              //3600 if we use it every 1 ms
-//}
+#ifdef CALCULATE_DISTANCE // not used yet
+void CalculateDistance(void){
+    vehicle.distance += ((vehicle.speed*100)/3600); //values in cms | 72 if we use it every 50 ms
+                                             // 3600 if we use it every 1 ms
+}
+#endif
 
 void CanVcuState(void){
     
@@ -593,7 +580,7 @@ void ReturnFromSleep(void){
 }
 
 void WiperActions(void){
-    #ifndef WIPER_CODE
+#ifdef WIPER_CODE_NEW
     
     switch(wiper_state){
         case 0: //STBY
@@ -661,141 +648,77 @@ void WiperActions(void){
         default:
             break;
         }
-        #else
-switch(wiper_state){
-        case 0: //STBY
-            if(VcuState_A.WIPER == 1){
-                wiper_state = 1;
-            }
-            break;
-        case 1: //READY
-//            Enable Converter
-            IO_WIPER_CONV_EN_SetHigh();
-//            Start PWM module
-            PTCON = 0x8000;
-//            Start Timer
-            flags.wiper_on = true;
-            if(flags.wiper_move == true)
-            {
-                wiper_state = 2;
-                flags.wiper_move = false;
-            }
-            break;
-        case 2: // Right
-            PDC2 = WIPER_LIMIT_RIGHT;
-            if(VcuState_A.WIPER == 0)
-            {
+#endif
+#ifdef WIPER_CODE_OLD
+            switch(wiper_state){
+             case 0: //STBY
+                if(VcuState_A.WIPER == 1){
+                    wiper_state = 1;
+                }
+                break;
+            case 1: //READY
+//                Enable Converter
+                IO_WIPER_CONV_EN_SetHigh();
+//                Start PWM module
+                PTCON = 0x8000;
+//                Start Timer
+                flags.wiper_on = true;
+                if(flags.wiper_move == true)
+                {
+                    wiper_state = 2;
+                    flags.wiper_move = false;
+                }
+                break;
+            case 2: // Left
+                PDC2 = WIPER_LEFT_X[wiper_step_cnt];
+                if(VcuState_A.WIPER == 0)
+                {
                 wiper_state = 4;
-            }
-            if(flags.wiper_move == true)
-            {
-                wiper_state = 3;
-                flags.wiper_move = false;
-            }
-            break;
-        case 3: // Left
-            PDC2 = WIPER_LIMIT_LEFT;
-            if(VcuState_A.WIPER == 0)
-            {
+                }
+                if(wiper_step_cnt >= 99){
+                    wiper_state = 3;
+                    flags.wiper_move = false;
+                }
+                break; 
+            case 3: // Right
+                
+            PDC2 = WIPER_LEFT_X[wiper_step_cnt];
+                if(VcuState_A.WIPER == 0)
+                {
                 wiper_state = 4;
-            }
+                }
+                if(wiper_step_cnt <= 0){
+                    wiper_state = 2;
+                    flags.wiper_move = false;
+                }
+                break;
+            case 4: // Center and ready to SW OFF
             if(flags.wiper_move == true)
-            {
-                wiper_state = 2;
-                flags.wiper_move = false;
-            }
-            break; 
-        case 4: // Center and ready to SW OFF
-            if(flags.wiper_move == true)
-            {
-                PDC2 = WIPER_LIMIT_RIGHT;
+                {
+                PDC2 = WIPER_WINDSCREEN_CENTER;
+                wiper_step_cnt = 0;
                 flags.wiper_move = false;
                 wiper_state = 5;
-            }
-        case 5: // ALL OFF
+                }
+                break;
+            case 5: // ALL OFF
             if(flags.wiper_move == true){
-                //Turn OFF PWM Module
+//                Turn OFF PWM Module
                 PTCON = 0x0000;
-                //Disable Wiper Timer Counter
+//                Disable Wiper Timer Counter
                 flags.wiper_on = false;
                 flags.wiper_move = false;
-                //Disable 5V Converter
+//                Disable 5V Converter
                 IO_WIPER_CONV_EN_SetLow();
                 wiper_state = 0;
+                }
+                break;
+            default:
+                break;
             }
-            break;
-        default:
-            break;
-        }
-        
-//            switch(wiper_state){
-//             case 0: //STBY
-//                if(VcuState_A.WIPER == 1){
-//                    wiper_state = 1;
-//                }
-//                break;
-//            case 1: //READY
-////                Enable Converter
-//                IO_WIPER_CONV_EN_SetHigh();
-////                Start PWM module
-//                PTCON = 0x8000;
-////                Start Timer
-//                flags.wiper_on = true;
-//                if(flags.wiper_move == true)
-//                {
-//                    wiper_state = 2;
-//                    flags.wiper_move = false;
-//                }
-//                break;
-//            case 2: // Left
-//                PDC2 = WIPER_LEFT_X[wiper_step_cnt];
-//                if(VcuState_A.WIPER == 0)
-//                {
-//                wiper_state = 4;
-//                }
-//                if(wiper_step_cnt >= 99){
-//                    wiper_state = 3;
-//                    flags.wiper_move = false;
-//                }
-//                break; 
-//            case 3: // Right
-//                
-//            PDC2 = WIPER_LEFT_X[wiper_step_cnt];
-//                if(VcuState_A.WIPER == 0)
-//                {
-//                wiper_state = 4;
-//                }
-//                if(wiper_step_cnt <= 0){
-//                    wiper_state = 2;
-//                    flags.wiper_move = false;
-//                }
-//                break;
-//            case 4: // Center and ready to SW OFF
-//            if(flags.wiper_move == true)
-//                {
-//                PDC2 = WIPER_WINDSCREEN_CENTER;
-//                wiper_step_cnt = 0;
-//                flags.wiper_move = false;
-//                wiper_state = 5;
-//                }
-//                break;
-//            case 5: // ALL OFF
-//            if(flags.wiper_move == true){
-////                Turn OFF PWM Module
-//                PTCON = 0x0000;
-////                Disable Wiper Timer Counter
-//                flags.wiper_on = false;
-//                flags.wiper_move = false;
-////                Disable 5V Converter
-//                IO_WIPER_CONV_EN_SetLow();
-//                wiper_state = 0;
-//                }
-//                break;
-//            default:
-//                break;
-//            }
-                
-        #endif
+
+     
+#endif
     
 }
 

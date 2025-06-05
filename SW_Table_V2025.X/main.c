@@ -71,29 +71,24 @@ int main(void){
 //        CLKDIVbits.ROI = 0;      // Interrupts not removing the CPU from DOZE mode
             
 #ifdef DEBUG_SERVO
-//        if(VcuState_A.WIPER == 1){
-//            PTCON = 0x8000;
-////                        PMD1bits.PWMMD = 0;
-//
-//            IO_WIPER_CONV_EN_SetHigh();
-//            PDC2 = WIPER_LIMIT_RIGHT;
-//        }
-//        
-//        if(VcuState_A.WIPER == 0){
-//            PTCON = 0x0000;
-//            IO_WIPER_CONV_EN_SetLow();
-////            PMD1bits.PWMMD = 1;
-//        }
+        if(VcuState_A.WIPER == 1){
+            PTCON = 0x8000;
+            IO_WIPER_CONV_EN_SetHigh();
+            PDC2 = WIPER_LIMIT_RIGHT;
+        }
+        
+        if(VcuState_A.WIPER == 0){
+            IO_WIPER_CONV_EN_SetLow();
+            PTCON = 0x0000;
+        }
         
 #else
         if(flags.wiper_on || VcuState_A.WIPER == 1){
             PMD1bits.PWMMD = 0;
             PWM_Initialize();
-            PDC2 = WIPER_LIMIT_RIGHT;
-            
+            PDC2 = WIPER_LIMIT_RIGHT;            
             WiperActions();         
-        }else{
-            
+        }else{            
             PMD1bits.PWMMD = 1;
         }
 #endif

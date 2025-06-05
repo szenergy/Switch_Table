@@ -177,17 +177,13 @@ void __attribute__ ((weak)) TMR1_CallBack(void)
         flags.can_vcu_state = true;
     }
     
-        if(wiper_step_time >= WIPER_STEP){
-            
-            if(wiper_state == 2){
+    if(wiper_step_time >= WIPER_STEP){            
+        if(wiper_state == 2){
             wiper_step_cnt++;
-            }
-            
-            if(wiper_state == 3){
-
+        }  
+        if(wiper_state == 3){
             wiper_step_cnt--;
-            }
-        
+        }    
          wiper_step_time = 0;      
         }
     
